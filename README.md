@@ -28,19 +28,24 @@ Welcome to my **DevSecOps Portfolio**, a personal website built using Django to 
 
 ## 📂 Project Structure
 
-
-
+```plaintext
 portfolio_website/
 ├── manage.py
-├── portfolio/
-│ ├── templates/
-│ │ ├── base.html
-│ │ └── home.html
-│ ├── static/
-│ ├── views.py
-│ ├── models.py
-│ ├── urls.py
-│ └── admin.py
+├── portfolio/   
+│   ├── static/
+│   ├── views.py
+│   ├── models.py
+│   ├── urls.py
+│   └── admin.py
+├── blog/  
+│   ├── static/
+│   ├── views.py
+│   ├── models.py
+│   ├── urls.py
+│   └── admin.py
+├── templates/
+│   │   ├── blog           
+│   │   └── portfolio
 ├── media/
 ├── db.sqlite3
 ├── requirements.txt
