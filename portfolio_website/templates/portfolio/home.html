@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home - Your Portfolio{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 mb-4">Hi, I'm Sakshi Chaudhary</h1>
+                <p class="lead mb-4">
+                    I am a DevSecOps Engineer with hands-on experience in designing, deploying, and securing scalable applications across cloud-native environments. My work bridges the gap between development, security, and operations, ensuring high-quality, secure, and automated software delivery.
+                    <br><br>
+                    Over the years, I have developed and maintained robust CI/CD pipelines using tools like Jenkins, GitHub Actions, and GitLab CI, integrating automated testing and security scanning tools such as SonarQube for code quality and OWASP ZAP for dynamic application security testing.
+                    <br><br>
+                    I have a strong foundation in Linux systems, infrastructure-as-code with Terraform, and cloud architecture on Amazon Web Services (AWS). My container orchestration experience includes managing microservices with Kubernetes, ensuring high availability, scalability, and secure deployments.
+                    <br><br>
+                    I have also worked extensively with Django, building secure and efficient web applications backed by MySQL databases, with API testing and documentation using Postman.
+                </p>
+                <div class="d-flex gap-3">
+                    <a href="#" class="btn btn-light btn-lg">View Projects</a>
+                    <a href="#" class="btn btn-outline-light btn-lg">About Me</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Projects -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Featured Projects</h2>
+        <div class="row">
+            {% for project in featured_projects %}
+            <div class="col-md-4 mb-4">
+                <div class="card project-card h-100">
+                    {% if project.image %}
+                    <img src="{{ project.image.url }}" class="card-img-top" alt="{{ project.title }}">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ project.title }}</h5>
+                        <p class="card-text">{{ project.description|truncatewords:20 }}</p>
+                        <a href="#" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center">
+                <p>No featured projects yet. Add some through the admin panel!</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5">Skills</h2>
+        <div class="row">
+            {% for skill in skills %}
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="text-center">
+                    <i class="fas fa-code fa-3x mb-3 text-primary"></i>
+                    <h5>{{ skill.name }}</h5>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: {{ skill.proficiency }}%"></div>
+                    </div>
+                    <small>{{ skill.proficiency }}%</small>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center">
+                <p>No skills added yet. Add some through the admin panel!</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- About Me Section (moved inside the container) -->
+    <div class="container mt-5">
+        <ul>
+            <li>🛡 <strong>Security:</strong> SonarQube, OWASP ZAP, Secure SDLC integration</li>
+            <li>🛠 <strong>DevOps & CI/CD:</strong> Jenkins, GitHub Actions, GitLab, Docker, Kubernetes</li>
+            <li>☁️ <strong>Cloud & IaC:</strong> AWS (EC2, S3, IAM, RDS), Terraform</li>
+            <li>🗃 <strong>Monitoring:</strong> Grafana, Prometheus</li>
+            <li>💻 <strong>Programming & Backend:</strong> Python, Django, REST APIs</li>
+            <li>🐧 <strong>Operating Systems:</strong> Linux (Ubuntu, CentOS)</li>
+            <li>🧪 <strong>Testing & API:</strong> Postman, automated security/API tests</li>
+            <li>🗃 <strong>Database:</strong> MySQL, PostgreSQL</li>
+        </ul>
+    </div>
+</section>
+{% endblock %}
